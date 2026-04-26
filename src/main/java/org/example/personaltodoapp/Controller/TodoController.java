@@ -34,6 +34,11 @@
                 Model model
         ) {
             Todo todo = todoService.findById(id);
+
+            if (todo == null) {
+                return "redirect:/";
+            }
+
             model.addAttribute("todo", todo);
             return "form-add-todo";
         }
