@@ -33,8 +33,13 @@
         <td th:text="${todo.dueDate}"></td>
         <td th:text="${todo.status}"></td>
         <td th:text="${todo.priority}"></td>
-        <td>Sua</td>
-        <td>Xoa</td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${todo.id})}" class="btn btn-warning">Edit</a>
+        </td>
+        <td>
+            <a th:href="@{/delete/{id}(id=${todo.id})}" class="btn btn-danger"
+               onclick="return confirm('Are u sure ??');">Delete</a>
+        </td>
     </tr>
     </tbody>
 </table>

@@ -17,7 +17,9 @@
 </head>
 <body>
 
-<form th:action="@{/add}" method="post" th:object="${todo}">
+<form th:action="@{/save}" method="post" th:object="${todo}">
+
+    <input type="hidden" th:field="*{id}">
 
     <div class="form-group">
         <label>Content</label>
@@ -28,9 +30,10 @@
 
     <div class="form-group">
         <label>Due Date</label>
-        <input type="datetime-local" th:field="*{dueDate}"
+        <input type="datetime-local"
+               th:field="*{dueDate}"
                class="form-control">
-        <p class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{dueDate}"></p>
+        <p class="error" th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></p>
     </div>
 
     <div class="form-group">
@@ -41,7 +44,7 @@
             <option value="COMPLETED">COMPLETED</option>
             <option value="CANCELLED">CANCELLED</option>
         </select>
-        <p class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{status}"></p>
+        <p class="error" th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
     </div>
 
     <div class="form-group">
@@ -52,12 +55,13 @@
             <option value="HIGH">HIGH</option>
             <option value="URGENT">URGENT</option>
         </select>
-        <p class="error" th:if="${#fields.hasErrors('content')}" th:errors="*{priority}"></p>
+        <p class="error" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}"></p>
     </div>
 
     <button type="submit" class="btn btn-primary">Submit</button>
-
+    <a th:href="@{/}" class="btn btn-secondary">Quay lai</a>
 </form>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

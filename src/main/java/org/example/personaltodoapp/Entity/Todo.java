@@ -5,6 +5,7 @@ import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -25,6 +26,7 @@ public class Todo {
 
     @NotNull(message = "Due date ko dc trong")
     @FutureOrPresent(message = "Due date ko dc qua khu")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
     @Column(name = "due_date")
     private LocalDateTime dueDate;
 
