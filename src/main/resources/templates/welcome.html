@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{welcome.title}">Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-header text-center bg-primary text-white">
+            <h4 th:text="#{welcome.title}">Welcome</h4>
+        </div>
+
+        <div class="card-body">
+
+            <div class="mb-3 text-center">
+                <a th:href="@{/welcome(lang='vi')}" class="btn btn-sm btn-outline-primary">
+                    Tiếng Việt
+                </a>
+                <a th:href="@{/welcome(lang='en')}" class="btn btn-sm btn-outline-success">
+                    English
+                </a>
+            </div>
+
+            <p class="text-center" th:text="#{welcome.description}">
+                Please enter owner name to continue
+            </p>
+
+            <form th:action="@{/save-owner}" method="post">
+                <div class="form-group">
+                    <label th:text="#{welcome.ownerName}">Owner Name</label>
+                    <input type="text"
+                           name="ownerName"
+                           class="form-control"
+                           th:placeholder="#{welcome.placeholder}">
+                </div>
+
+                <p class="text-danger" th:if="${error != null}" th:text="#{welcome.error}"></p>
+
+                <button type="submit" class="btn btn-primary btn-block" th:text="#{welcome.start}">
+                    Start
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
